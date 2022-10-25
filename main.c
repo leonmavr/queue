@@ -2,6 +2,11 @@
 #include <stdio.h>
 
 
+typedef struct Point {
+    int x, y, z;
+} Point;
+
+
 int main(int argc, char **argv) {
     Point p = (Point) {0, 1, 2};
     Point p2 = (Point) {42, 43, 44};
@@ -20,7 +25,11 @@ int main(int argc, char **argv) {
     printf("%d\n", ((Point*)(q->head->next->next->data))->x);
     printf("%d\n", ((Point*)(q->head->next->next->data))->y);
     printf("%d\n", ((Point*)(q->head->next->next->data))->z);
+    printf("size: %d\n", q->size);
     printf("pop: %d\n", ((Point*) queue_pop(q))->x);
+    printf("pop: %d\n", ((Point*) queue_pop(q))->x);
+    queue_append(q, &p);
+    printf("%d\n", ((Point*)(q->tail->data))->x);
     printf("pop: %d\n", ((Point*) queue_pop(q))->x);
     printf("pop: %d\n", ((Point*) queue_pop(q))->x);
     return 0;

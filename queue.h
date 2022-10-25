@@ -5,10 +5,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-typedef struct Point {
-    int x, y, z;
-} Point;
-
 typedef struct Node {
 	void* data;
 	struct Node* next;
@@ -44,6 +40,7 @@ void queue_append(Queue* q, void* data) {
     newnode->data = data;
     newnode->next = NULL;
     if (!queue_isEmpty(q)) {
+        // link tail to newnode, increment tail
         q->tail->next = newnode;    
         q->tail = newnode;
     } else {
