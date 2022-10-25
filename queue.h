@@ -16,6 +16,11 @@ typedef struct Queue {
 	Node* tail;
 } Queue;
 
+typedef struct Point {
+    int x, y, z;
+} Point;
+
+
 size_t queue_size(Queue* q) {
     return q->size;
 }
@@ -62,6 +67,17 @@ void* queue_pop(Queue* q) {
     prevHead = NULL;
     q->size--;
     return popped;
+}
+
+void queue_delete(Queue* q) {
+    Node* prev = q->head;
+    while (q->head != NULL) {
+        printf("deleting node with y = %d\n", ((Point* )(q->head->data))->x);
+        prev = q->head;
+        q->head = q->head->next;
+        free(prev);
+    }
+
 }
 
 #endif /* QUEUE_H */
