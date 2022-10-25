@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+
 typedef struct Node {
 	void* data;
 	struct Node* next;
@@ -16,20 +17,16 @@ typedef struct Queue {
 	Node* tail;
 } Queue;
 
-typedef struct Point {
-    int x, y, z;
-} Point;
 
-
-size_t queue_size(Queue* q) {
+extern inline size_t queue_size(Queue* q) {
     return q->size;
 }
 
-bool queue_isEmpty(Queue* q) {
+extern inline bool queue_isEmpty(Queue* q) {
     return (q->head == NULL) && (q->tail == NULL);
 }
 
-Queue* queue_new() {
+extern Queue* queue_new() {
     Queue* q = malloc(sizeof(Queue));
     q->size = 0;
     q->head = malloc(sizeof(Node));
@@ -39,8 +36,7 @@ Queue* queue_new() {
     return q;
 }
 
-
-void queue_append(Queue* q, void* data) {
+extern void queue_append(Queue* q, void* data) {
     Node* newnode = malloc(sizeof(Node));
     newnode->data = data;
     newnode->next = NULL;
@@ -55,7 +51,7 @@ void queue_append(Queue* q, void* data) {
     q->size++;
 }
 
-void* queue_pop(Queue* q) {
+extern void* queue_pop(Queue* q) {
     void* popped = malloc(sizeof(Node));
     // the previous head - we have to clear it
     Node* prevHead = q->head;
@@ -69,14 +65,13 @@ void* queue_pop(Queue* q) {
     return popped;
 }
 
-void queue_delete(Queue* q) {
-    Node* prev = q->head;
+extern void queue_delete(Queue* q) {
     while (q->head != NULL) {
-        printf("deleting node with y = %d\n", ((Point* )(q->head->data))->x);
-        prev = q->head;
+        Node *prev = q->head;
         q->head = q->head->next;
         free(prev);
     }
+    free(q);
 
 }
 
