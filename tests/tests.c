@@ -63,14 +63,14 @@ void testQueuePop(Queue* q) {
     *p2 = (Point) {42, 43, 44};
     *p3 = (Point) {-1, -1, -1};
 
-    // it's a FILO struct so we pop the first added elements
+    // it's a FILO struct so we pop the least recently added elements first
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p1); 
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p2); 
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p3); 
-
+    free(popped);
 }
 
 void testQueueDelete(Queue* q) {
@@ -79,15 +79,15 @@ void testQueueDelete(Queue* q) {
 }
 
 
-
 int main(int argc, char **argv) {
+    // queue_new takes care of the memory allocation
     Queue* q = queue_new();
     testQueueAppend(q);
     testQueuePop(q);
+    // no need to deallocate the queue - this is done in the test
     testQueueDelete(q);
     printf("\n====================================\n"); \
-    printf("All tests successful!\n");
-    printf("====================================\n"); \
-    
+    printf("All tests successful!");
+    printf("\n====================================\n"); \
     return 0;
 }
