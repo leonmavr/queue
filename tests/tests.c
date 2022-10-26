@@ -63,7 +63,7 @@ void testQueuePop(Queue* q) {
     *p2 = (Point) {42, 43, 44};
     *p3 = (Point) {-1, -1, -1};
 
-    // it's a FILO struct so we pop the least recently added elements first
+    // it's a FIFO struct so we pop the least recently added elements first
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p1); 
     popped = (Point*) (queue_pop(q));
