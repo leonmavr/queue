@@ -2,7 +2,7 @@
 Generic header-only implementation of a queue.
 
 ### About
-It implements the queue (a FIFO data strcuture) more or less as defined [here](https://isaaccomputerscience.org/concepts/dsa_datastruct_queue?examBoard=all&stage=all). However, there a couple of small deviations from the definition:
+It implements the queue (a FIFO data strcuture - the first element to be added to the queue will be the first element to be removed from the queue) more or less as defined [here](https://isaaccomputerscience.org/concepts/dsa_datastruct_queue?examBoard=all&stage=all). However, there a couple of small deviations from the definition:
 * function `enqueue(data)` is named `append(data)` and `dequeue()` is named `pop()`.
 * The is no maximum capacity. User is free to add any amount of data.
 

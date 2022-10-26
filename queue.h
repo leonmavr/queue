@@ -22,7 +22,7 @@ extern inline size_t queue_size(Queue* q) {
 }
 
 extern inline bool queue_isEmpty(Queue* q) {
-    return (q->head == NULL) && (q->tail == NULL);
+    return q->size == 0;
 }
 
 extern Queue* queue_new() {
@@ -40,7 +40,7 @@ extern void queue_append(Queue* q, void* data) {
     newnode->data = data;
     newnode->next = NULL;
     if (!queue_isEmpty(q)) {
-        // link tail to newnode, increment tail
+        // link tail to new node, increment tail to point to new node
         q->tail->next = newnode;    
         q->tail = newnode;
     } else {
