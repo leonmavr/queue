@@ -28,8 +28,6 @@ extern inline bool queue_isEmpty(Queue* q) {
 extern Queue* queue_new() {
     Queue* q = malloc(sizeof(Queue));
     q->size = 0;
-    q->head = malloc(sizeof(Node));
-    q->tail= malloc(sizeof(Node));
     q->head = NULL;
     q->tail = NULL;
     return q;
@@ -51,11 +49,11 @@ extern void queue_append(Queue* q, void* data) {
 }
 
 extern void* queue_pop(Queue* q) {
-    void* popped = malloc(sizeof(Node));
+    // data to return
+    void* popped = q->head->data;
     // the previous head - we have to clear it
     Node* prevHead = q->head;
     // get current head, then increment it
-    popped = q->head->data;
     q->head = q->head->next;
     // cleanup
     free(prevHead);
@@ -70,6 +68,7 @@ extern void queue_delete(Queue* q) {
         q->head = q->head->next;
         free(prev);
     }
+    free(q->head);
     free(q);
 }
 

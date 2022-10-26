@@ -34,7 +34,7 @@ void testQueueAppend(Queue* q) {
     Point* p3 = malloc(sizeof(Point));
     *p1 = (Point) {0, 1, 2};
     *p2 = (Point) {42, 43, 44};
-    *p3 = (Point) {-1, -1, -1};
+    *p3 = (Point) {-2, -2, -2};
 
     queue_append(q, p1);
     queue_append(q, p2);
@@ -46,10 +46,6 @@ void testQueueAppend(Queue* q) {
     CMP_POINTS((Point*) (q->tail->data), p3);
     // test the size too
     assert(queue_size(q) == 3);
-
-    free(p1);
-    free(p2);
-    free(p3);
 }
 
 void testQueuePop(Queue* q) {
@@ -61,7 +57,7 @@ void testQueuePop(Queue* q) {
     // these points must be be the same as in testQueuePop to compare them
     *p1 = (Point) {0, 1, 2};
     *p2 = (Point) {42, 43, 44};
-    *p3 = (Point) {-1, -1, -1};
+    *p3 = (Point) {-2, -2, -2};
 
     // it's a FIFO struct so we pop the least recently added elements first
     popped = (Point*) (queue_pop(q));
