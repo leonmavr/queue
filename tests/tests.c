@@ -24,12 +24,11 @@ unsigned g_indCase = 0;
 } while (0);
 
 // define some data structure for the tests
-//
 typedef struct Point {
     int x, y, z;
 } Point;
 
-int testQueueAppend(Queue* q) {
+void testQueueAppend(Queue* q) {
     Point* p1 = malloc(sizeof(Point));
     Point* p2 = malloc(sizeof(Point));
     Point* p3 = malloc(sizeof(Point));
@@ -41,10 +40,42 @@ int testQueueAppend(Queue* q) {
     queue_append(q, p2);
     queue_append(q, p3);
 
-    CMP_POINTS((Point*)(q->head->data), p1);
-    CMP_POINTS((Point*)(q->head->next->data), p2);
-    CMP_POINTS((Point*)(q->head->next->next->data), p3);
-    CMP_POINTS((Point*)(q->tail->data), p3);
+    CMP_POINTS((Point*) (q->head->data), p1);
+    CMP_POINTS((Point*) (q->head->next->data), p2);
+    CMP_POINTS((Point*) (q->head->next->next->data), p3);
+    CMP_POINTS((Point*) (q->tail->data), p3);
+    // test the size too
+    assert(queue_size(q) == 3);
+
+    free(p1);
+    free(p2);
+    free(p3);
+}
+
+void testQueuePop(Queue* q) {
+    // p1 to p3 must be be the same as in testQueuePop to compare them
+    Point* p1 = malloc(sizeof(Point));
+    Point* p2 = malloc(sizeof(Point));
+    Point* p3 = malloc(sizeof(Point));
+    Point* popped = malloc(sizeof(Point));
+    // these points must be be the same as in testQueuePop to compare them
+    *p1 = (Point) {0, 1, 2};
+    *p2 = (Point) {42, 43, 44};
+    *p3 = (Point) {-1, -1, -1};
+
+    // it's a FILO struct so we pop the first added elements
+    popped = (Point*) (queue_pop(q));
+    CMP_POINTS(popped, p1); 
+    popped = (Point*) (queue_pop(q));
+    CMP_POINTS(popped, p2); 
+    popped = (Point*) (queue_pop(q));
+    CMP_POINTS(popped, p3); 
+
+}
+
+void testQueueDelete(Queue* q) {
+    Point* p = malloc(sizeof(Point));
+    queue_delete(q);
 }
 
 
@@ -52,6 +83,8 @@ int testQueueAppend(Queue* q) {
 int main(int argc, char **argv) {
     Queue* q = queue_new();
     testQueueAppend(q);
+    testQueuePop(q);
+    testQueueDelete(q);
     printf("\n====================================\n"); \
     printf("All tests successful!\n");
     printf("====================================\n"); \
