@@ -6,10 +6,10 @@
 // test case index
 unsigned g_indCase = 0;
 
-#define CMP_POINTS(ptrQueueData, targetPoint) do { \
-    int tx = targetPoint->x; \
-    int ty = targetPoint->y; \
-    int tz = targetPoint->z; \
+#define CMP_POINTS(ptrQueueData, ptrTargetPoint) do { \
+    int tx = ptrTargetPoint->x; \
+    int ty = ptrTargetPoint->y; \
+    int tz = ptrTargetPoint->z; \
     printf("%s (case #%d):\n\tinput 1: %d, %d, %d\n\tinput 2: %d, %d, %d\n", \
         __func__, \
         g_indCase++, \

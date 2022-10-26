@@ -4,7 +4,7 @@
 CC = gcc
 
 INCL_DIR = .
-CFLAGS = -std=c99 -I$(INCL_DIR) -Wall
+CFLAGS = -I$(INCL_DIR) -Wall
 TEST_DIR = tests
 EXEC = $(TEST_DIR)/tests
 #SOURCES = $(wildcard $(TESTS_DIR)*.c)
