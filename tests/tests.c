@@ -10,7 +10,7 @@ unsigned g_indCase = 0;
     int tx = ptrTargetPoint->x; \
     int ty = ptrTargetPoint->y; \
     int tz = ptrTargetPoint->z; \
-    printf("%s (case #%d):\n\tinput 1: %d, %d, %d\n\tinput 2: %d, %d, %d\n", \
+    printf("%s (case #%d):\n\tdata: %d, %d, %d\n\ttarget: %d, %d, %d\n", \
         __func__, \
         g_indCase++, \
         ((ptrQueueData))->x, \
