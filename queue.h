@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
-#include <stdio.h>
 
 
 typedef struct Node {
@@ -72,7 +71,6 @@ extern void queue_delete(Queue* q) {
         free(prev);
     }
     free(q);
-
 }
 
 #endif /* QUEUE_H */

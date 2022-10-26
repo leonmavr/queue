@@ -74,7 +74,6 @@ void testQueuePop(Queue* q) {
 }
 
 void testQueueDelete(Queue* q) {
-    Point* p = malloc(sizeof(Point));
     queue_delete(q);
 }
 
