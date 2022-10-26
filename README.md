@@ -7,7 +7,7 @@ It implements the queue (a FIFO datastrcuture) more or less as defined [here](ht
 * The is no maximum capacity. User is free to add any amount of data.
 
 ### Usage
-There is no `main.c`. The makefile runs some unit tests (found in `tests/tests.c` directory) that assert that `append` and `pop` work correctly. You can run them with `make` and clean them with `make clean`.
+There is no `main.c`. The makefile runs some unit tests (found in `tests/tests.c`) that assert that `append` and `pop` work correctly. You can run them with `make` and clean them with `make clean`.
 
 ### Example
 

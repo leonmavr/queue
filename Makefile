@@ -3,7 +3,7 @@
 ###################################################
 CC = gcc
 
-INCL_DIR = . 
+INCL_DIR = .
 CFLAGS = -std=c99 -I$(INCL_DIR) -Wall
 TEST_DIR = tests
 EXEC = $(TEST_DIR)/tests
@@ -17,7 +17,7 @@ all: $(EXEC)
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(EXEC) $(LDFLAGS) 
 
-%.o: %.cpp
+%.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 .PHONY: clean
