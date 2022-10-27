@@ -61,11 +61,15 @@ void testQueuePop(Queue* q) {
 
     // it's a FIFO struct so we pop the least recently added elements first
     popped = (Point*) (queue_pop(q));
-    CMP_POINTS(popped, p1); 
+    CMP_POINTS(popped, p1);
     popped = (Point*) (queue_pop(q));
-    CMP_POINTS(popped, p2); 
+    CMP_POINTS(popped, p2);
     popped = (Point*) (queue_pop(q));
-    CMP_POINTS(popped, p3); 
+    CMP_POINTS(popped, p3);
+    // cleanup
+    free(p1);
+    free(p2);
+    free(p3);
     free(popped);
 }
 
