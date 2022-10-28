@@ -53,7 +53,8 @@ void testQueuePop(Queue* q) {
     Point* p1 = malloc(sizeof(Point));
     Point* p2 = malloc(sizeof(Point));
     Point* p3 = malloc(sizeof(Point));
-    Point* popped = malloc(sizeof(Point));
+    // it will simply point to the popped element so we don't need to allocate it
+    Point* popped;
     // these points must be be the same as in testQueuePop to compare them
     *p1 = (Point) {0, 1, 2};
     *p2 = (Point) {42, 43, 44};
@@ -62,10 +63,17 @@ void testQueuePop(Queue* q) {
     // it's a FIFO struct so we pop the least recently added elements first
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p1);
+
+    free(popped);
+    popped = (Point*) realloc(popped, sizeof(Point));
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p2);
+
+    free(popped);
+    popped = (Point*) realloc(popped, sizeof(Point));
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p3);
+
     // cleanup
     free(p1);
     free(p2);
