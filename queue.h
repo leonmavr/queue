@@ -1,19 +1,19 @@
 #ifndef QUEUE_H
-#define QUEUE_H 
+#define QUEUE_H
 
 #include <stdlib.h>
 #include <stdbool.h>
 
 
 typedef struct Node {
-	void* data;
-	struct Node* next;
+    void* data;
+    struct Node* next;
 } Node;
 
 typedef struct Queue {
-	size_t size;
-	Node* head;
-	Node* tail;
+    size_t size;
+    Node* head;
+    Node* tail;
 } Queue;
 
 
@@ -39,7 +39,7 @@ extern void queue_append(Queue* q, void* data) {
     newnode->next = NULL;
     if (!queue_isEmpty(q)) {
         // link tail to new node, increment tail to point to new node
-        q->tail->next = newnode;    
+        q->tail->next = newnode;
         q->tail = newnode;
     } else {
         q->head = newnode;
@@ -66,9 +66,10 @@ extern void queue_delete(Queue* q) {
     while (q->head != NULL) {
         Node *prev = q->head;
         q->head = q->head->next;
+        if (prev->data != NULL)
+            free(prev->data);
         free(prev);
     }
-    free(q->head);
     free(q);
 }
 
