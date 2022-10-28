@@ -65,12 +65,10 @@ void testQueuePop(Queue* q) {
     CMP_POINTS(popped, p1);
 
     free(popped);
-    popped = (Point*) realloc(popped, sizeof(Point));
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p2);
 
     free(popped);
-    popped = (Point*) realloc(popped, sizeof(Point));
     popped = (Point*) (queue_pop(q));
     CMP_POINTS(popped, p3);
 
