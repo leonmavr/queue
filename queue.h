@@ -17,15 +17,15 @@ typedef struct Queue {
 } Queue;
 
 
-extern inline size_t queue_size(Queue* q) {
+static inline size_t queue_size(Queue* q) {
     return q->size;
 }
 
-extern inline bool queue_isEmpty(Queue* q) {
+static inline bool queue_isEmpty(Queue* q) {
     return q->size == 0;
 }
 
-extern Queue* queue_new() {
+static Queue* queue_new() {
     Queue* q = malloc(sizeof(Queue));
     q->size = 0;
     q->head = NULL;
@@ -33,7 +33,7 @@ extern Queue* queue_new() {
     return q;
 }
 
-extern void queue_append(Queue* q, void* data) {
+static void queue_append(Queue* q, void* data) {
     Node* newnode = malloc(sizeof(Node));
     newnode->data = data;
     newnode->next = NULL;
@@ -48,7 +48,7 @@ extern void queue_append(Queue* q, void* data) {
     q->size++;
 }
 
-extern void* queue_pop(Queue* q) {
+static void* queue_pop(Queue* q) {
     // data to return
     void* popped = q->head->data;
     // the previous head - we have to clear it
@@ -62,7 +62,7 @@ extern void* queue_pop(Queue* q) {
     return popped;
 }
 
-extern void queue_delete(Queue* q) {
+static void queue_delete(Queue* q) {
     while (q->head != NULL) {
         Node *prev = q->head;
         q->head = q->head->next;
